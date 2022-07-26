@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\TagController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
@@ -48,6 +49,7 @@ Route::get('/dashboard', function () {
 Route::prefix('admin')->middleware(['auth', 'role'])->group(function(){
     Route::get('admin_dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::resource('categories', CategoryController::class);
+    Route::resource('tags', TagController::class);
 });
 
 

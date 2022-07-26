@@ -1,18 +1,18 @@
-@extends('layouts.admin')
-@section('title', 'Category')
-@section('content')
+
+<?php $__env->startSection('title', 'Tag'); ?>
+<?php $__env->startSection('content'); ?>
 
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Category List</h1>
+                    <h1 class="m-0">Tag List</h1>
                 </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="{{route('website')}}">Home</a></li>
-                <li class="breadcrumb-item active">Category List</li>
+                <li class="breadcrumb-item"><a href="<?php echo e(route('website')); ?>">Home</a></li>
+                <li class="breadcrumb-item active">Tag List</li>
                 </ol>
             </div><!-- /.col -->
             </div><!-- /.row -->
@@ -28,9 +28,9 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex justify-content-between align-items-center">
-                                <h3 class="card-title">Category List</h3>
+                                <h3 class="card-title">Tag List</h3>
                             
-                                <a href="{{route('categories.create')}}" class="btn btn-primary">Create Category</a>
+                                <a href="<?php echo e(route('tags.create')); ?>" class="btn btn-primary">Create Tag</a>
                             </div>
                         </div>
                         
@@ -46,39 +46,41 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if($categories->count() > 0)
-                                    @foreach ($categories as $category)
+                                    <?php if($tags->count() > 0): ?>
+                                    <?php $__currentLoopData = $tags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr>
-                                        <td>{{ $category->id }}</td>
-                                        <td>{{ $category->name }}</td>
-                                        <td>{{ $category->slug }}</td>
+                                        <td><?php echo e($tag->id); ?></td>
+                                        <td><?php echo e($tag->name); ?></td>
+                                        <td><?php echo e($tag->slug); ?></td>
                                         <td>
-                                            {{ $category->id }}
+                                            <?php echo e($tag->id); ?>
+
                                         </td>
                                         <td class="d-flex">
-                                            <a href="{{ route('categories.edit', [$category->id]) }}" class="btn btn-sm btn-primary mr-1"> <i class="fas fa-edit"></i> </a>
-                                            <form action="{{ route('categories.destroy', [$category->id]) }}" class="mr-1" method="POST">
-                                                @method('DELETE')
-                                                @csrf 
+                                            <a href="<?php echo e(route('tags.edit', [$tag->id])); ?>" class="btn btn-sm btn-primary mr-1"> <i class="fas fa-edit"></i> </a>
+                                            <form action="<?php echo e(route('tags.destroy', [$tag->id])); ?>" class="mr-1" method="POST">
+                                                <?php echo method_field('DELETE'); ?>
+                                                <?php echo csrf_field(); ?> 
                                                 <button type="submit" class="btn btn-sm btn-danger"> <i class="fas fa-trash"></i> </button>
                                             </form>
-                                            {{-- <a href="{{ route('categories.show', [$category->id]) }}" class="btn btn-sm btn-success mr-1"> <i class="fas fa-eye"></i> </a> --}}
+                                            <a href="<?php echo e(route('tags.show', [$tag->id])); ?>" class="btn btn-sm btn-success mr-1"> <i class="fas fa-eye"></i> </a>
                                         </td>
                                     </tr>
-                                    @endforeach
-                                    @else   
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    <?php else: ?>   
                                     <tr>
                                         <td colspan="5">
-                                            <h5 class="text-center">No categories found.</h5>
+                                            <h5 class="text-center">No tags found.</h5>
                                         </td>
                                     </tr>
-                                    @endif
+                                    <?php endif; ?>
                                 </tbody>
                             </table>
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer d-flex justify-content-center">
-                            {{ $categories->links() }}
+                            <?php echo e($tags->links()); ?>
+
                         </div>
                     </div>
                 </div>
@@ -89,7 +91,9 @@
     
 
 
-@endsection
+<?php $__env->stopSection(); ?>
 
 
 
+
+<?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\admin\Downloads\Blog-app\resources\views/admin/tag/index.blade.php ENDPATH**/ ?>

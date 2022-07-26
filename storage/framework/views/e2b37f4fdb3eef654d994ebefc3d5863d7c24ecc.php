@@ -46,7 +46,7 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="<?php echo e(route('website')); ?>" class="nav-link">Home</a>
       </li>
-      <li class="nav-item float-end d-none d-sm-inline-block">
+      <li class="nav-item">
         <a href="<?php echo e(route('logout')); ?>" class="nav-link">Logout</a>
       </li>
     </ul>
@@ -119,6 +119,29 @@
                 <a href="<?php echo e(route('categories.create')); ?>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Create Category</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tag"></i>
+              <p>
+                Tag
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo e(route('tags.index')); ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Tag List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo e(route('tags.create')); ?>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Create Tag</p>
                 </a>
               </li>
             </ul>
