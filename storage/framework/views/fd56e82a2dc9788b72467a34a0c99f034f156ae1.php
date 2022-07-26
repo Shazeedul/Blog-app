@@ -35,7 +35,7 @@
                         </div>
                         
                         <div class="card-body">
-                            <table class="table table-bordered">
+                            <table class="table table-bordered table-sm">
                                 <thead>
                                     <tr>
                                         <th style="width: 10px">#</th>
@@ -63,7 +63,7 @@
                                                 <?php echo csrf_field(); ?> 
                                                 <button type="submit" class="btn btn-sm btn-danger"> <i class="fas fa-trash"></i> </button>
                                             </form>
-                                            <a href="<?php echo e(route('tags.show', [$tag->id])); ?>" class="btn btn-sm btn-success mr-1"> <i class="fas fa-eye"></i> </a>
+                                            
                                         </td>
                                     </tr>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
