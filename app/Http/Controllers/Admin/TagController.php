@@ -73,6 +73,11 @@ class TagController extends Controller
     
     public function destroy(Tag $tag)
     {
-        //
+        if($tag){
+            $tag->delete();
+
+            Session::flash('success', 'Tag deleted successfully');
+            return redirect()->route('tags.index');
+        }
     }
 }
