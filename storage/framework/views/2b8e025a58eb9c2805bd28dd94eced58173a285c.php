@@ -1,1 +1,0 @@
-<h1>dashboard</h1><?php /**PATH G:\Web Development\Laravel\Blog-app\resources\views/website/dashboard.blade.php ENDPATH**/ ?>
