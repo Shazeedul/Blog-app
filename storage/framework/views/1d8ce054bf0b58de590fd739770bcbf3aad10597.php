@@ -31,7 +31,7 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <h3 class="card-title">Create Category </h3>
                             
-                                <a href="<?php echo e(route('categories.index')); ?>" class="btn btn-primary">Go Back to Category List</a>
+                                <a href="<?php echo e(route('categories.index')); ?>" class="btn btn-primary">Back to Category List</a>
                             </div>
                         </div>
                         
@@ -41,6 +41,7 @@
                                     <form action="<?php echo e(route('categories.store')); ?>" method="POST">
                                         <?php echo csrf_field(); ?>
                                         <div class="card-body">
+                                            <?php echo $__env->make('includes.errors', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                                             <div class="form-group">
                                                 <label for="name">Category name</label>
                                                 <input type="name" name="name" class="form-control" id="name" placeholder="Enter name">
@@ -51,7 +52,7 @@
                                                     placeholder="Enter description"></textarea>
                                             </div>
                                         </div>
-                                        <div class="card-footer">
+                                        <div class="m-4">
                                             <button type="submit" class="btn btn-primary">Submit</button>
                                         </div>
                                     </form>
