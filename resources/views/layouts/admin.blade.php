@@ -25,6 +25,8 @@
   <link rel="stylesheet" href="{{asset('assets/admin/plugins/daterangepicker/daterangepicker.css')}}">
   <!-- summernote -->
   <link rel="stylesheet" href="{{asset('assets/admin/plugins/summernote/summernote-bs4.min.css')}}">
+  <!-- toastr css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -43,6 +45,9 @@
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="{{route('website')}}" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item float-end d-none d-sm-inline-block">
+        <a href="{{route('logout')}}" class="nav-link">Logout</a>
       </li>
     </ul>
 
@@ -87,38 +92,17 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+          <li class="nav-item">
+            <a href="{{ route('admin.dashboard')}}" class="nav-link bg-primary">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
-                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="./index.html" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v1</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./index2.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v2</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v3</p>
-                </a>
-              </li>
-            </ul>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="nav-icon fas fa-tags"></i>
               <p>
                 Category
                 <i class="right fas fa-angle-left"></i>
@@ -140,7 +124,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="{{route('logout')}}" class="nav-link">
+            <a href="{{route('logout')}}" class="nav-link bg-danger">
               <i class="nav-icon fas fa-sign-out-alt"></i>
               <p>
                 Logout
@@ -153,8 +137,13 @@
     </div>
     <!-- /.sidebar -->
   </aside>
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
 
     @yield('content')
+
+  </div>
+  <!-- /.content-wrapper -->
 
   <footer class="main-footer">
     <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
@@ -204,5 +193,13 @@
 <script src="{{asset('assets/admin/js/adminlte.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('assets/admin/js/pages/dashboard.js')}}"></script>
+<!-- Toastr Js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+@yield('script')
+<script>
+  @if(Session::has('success'))
+    toastr.success("{{ Session::get('success') }}");
+  @endif
+</script>
 </body>
 </html>

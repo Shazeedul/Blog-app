@@ -46,7 +46,7 @@ Route::get('/dashboard', function () {
 
 //Admin Panel Route
 Route::prefix('admin')->middleware(['auth', 'role'])->group(function(){
-    Route::get('admin_dashboard', [AdminController::class, 'index']);
+    Route::get('admin_dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::resource('categories', CategoryController::class);
 });
 

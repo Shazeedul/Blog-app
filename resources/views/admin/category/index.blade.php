@@ -1,8 +1,7 @@
 @extends('layouts.admin')
 @section('title', 'Category')
 @section('content')
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
@@ -47,29 +46,39 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @if($categories->count())
+                                    @foreach ($categories as $category)
                                     <tr>
-                                        <td>1.</td>
-                                        <td>Update software</td>
-                                        <td>Update software</td>
+                                        <td>{{ $category->id }}</td>
+                                        <td>{{ $category->name }}</td>
+                                        <td>{{ $category->slug }}</td>
                                         <td>
-                                        <div class="progress progress-xs">
-                                        <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                                        </div>
+                                            {{ $category->id }}
                                         </td>
-                                        <td><span class="badge bg-danger">55%</span></td>
+                                        <td class="d-flex">
+                                            <a href="{{ route('categories.edit', [$category->id]) }}" class="btn btn-sm btn-primary mr-1"> <i class="fas fa-edit"></i> </a>
+                                            <form action="{{ route('categories.destroy', [$category->id]) }}" class="mr-1" method="POST">
+                                                @method('DELETE')
+                                                @csrf 
+                                                <button type="submit" class="btn btn-sm btn-danger"> <i class="fas fa-trash"></i> </button>
+                                            </form>
+                                            {{-- <a href="{{ route('categories.show', [$category->id]) }}" class="btn btn-sm btn-success mr-1"> <i class="fas fa-eye"></i> </a> --}}
+                                        </td>
                                     </tr>
+                                    @endforeach
+                                    @else   
+                                    <tr>
+                                        <td colspan="5">
+                                            <h5 class="text-center">No categories found.</h5>
+                                        </td>
+                                    </tr>
+                                    @endif
                                 </tbody>
                             </table>
                         </div>
-                        
-                        <div class="card-footer clearfix">
-                            <ul class="pagination pagination-sm m-0 float-right">
-                                <li class="page-item"><a class="page-link" href="#">«</a></li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">»</a></li>
-                            </ul>
+                        <!-- /.card-body -->
+                        <div class="card-footer d-flex justify-content-center">
+                            {{ $categories->links() }}
                         </div>
                     </div>
                 </div>
@@ -78,8 +87,7 @@
     </div>
     <!-- /.Main Content -->
     
-</div>
-<!-- /.content-wrapper -->
+
 
 @endsection
 

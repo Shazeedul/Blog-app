@@ -1,8 +1,7 @@
 
 <?php $__env->startSection('title', 'Dasboard'); ?>
 <?php $__env->startSection('content'); ?>
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
+
         <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="container-fluid">
@@ -599,7 +598,5 @@
         </div><!-- /.container-fluid -->
         </section>
         <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\admin\Downloads\Blog-app\resources\views/admin/dashboard.blade.php ENDPATH**/ ?>

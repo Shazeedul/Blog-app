@@ -1,8 +1,7 @@
 
 <?php $__env->startSection('title', 'Category'); ?>
 <?php $__env->startSection('content'); ?>
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
+
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
@@ -47,29 +46,41 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php if($categories->count()): ?>
+                                    <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <tr>
-                                        <td>1.</td>
-                                        <td>Update software</td>
-                                        <td>Update software</td>
+                                        <td><?php echo e($category->id); ?></td>
+                                        <td><?php echo e($category->name); ?></td>
+                                        <td><?php echo e($category->slug); ?></td>
                                         <td>
-                                        <div class="progress progress-xs">
-                                        <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                                        </div>
+                                            <?php echo e($category->id); ?>
+
                                         </td>
-                                        <td><span class="badge bg-danger">55%</span></td>
+                                        <td class="d-flex">
+                                            <a href="<?php echo e(route('categories.edit', [$category->id])); ?>" class="btn btn-sm btn-primary mr-1"> <i class="fas fa-edit"></i> </a>
+                                            <form action="<?php echo e(route('categories.destroy', [$category->id])); ?>" class="mr-1" method="POST">
+                                                <?php echo method_field('DELETE'); ?>
+                                                <?php echo csrf_field(); ?> 
+                                                <button type="submit" class="btn btn-sm btn-danger"> <i class="fas fa-trash"></i> </button>
+                                            </form>
+                                            
+                                        </td>
                                     </tr>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    <?php else: ?>   
+                                    <tr>
+                                        <td colspan="5">
+                                            <h5 class="text-center">No categories found.</h5>
+                                        </td>
+                                    </tr>
+                                    <?php endif; ?>
                                 </tbody>
                             </table>
                         </div>
-                        
-                        <div class="card-footer clearfix">
-                            <ul class="pagination pagination-sm m-0 float-right">
-                                <li class="page-item"><a class="page-link" href="#">«</a></li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">»</a></li>
-                            </ul>
+                        <!-- /.card-body -->
+                        <div class="card-footer d-flex justify-content-center">
+                            <?php echo e($categories->links()); ?>
+
                         </div>
                     </div>
                 </div>
@@ -78,8 +89,7 @@
     </div>
     <!-- /.Main Content -->
     
-</div>
-<!-- /.content-wrapper -->
+
 
 <?php $__env->stopSection(); ?>
 

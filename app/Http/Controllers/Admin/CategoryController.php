@@ -3,14 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
     
     public function index()
     {
-        return view('admin.category.index');
+        $categories = Category::orderBy('created_at', 'DESC')->paginate('20');
+        return view('admin.category.index', compact('categories'));
     }
 
     
@@ -24,52 +28,57 @@ class CategoryController extends Controller
     {
         // dd($request->all());
         $this->validate($request, [
-            'name' => 'required',
+            'name' => 'required|unique:categories,name',
         ]);
+
+        Category::create([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name, '-'),
+            'description' => $request->description,
+        ]);
+
+        Session::flash('success', 'Category created successfully');
+
+        return redirect()->back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    
+    public function show(Category $category)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    
+    public function edit(Category $category)
     {
-        //
+        return view('admin.category.edit', compact('category'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    
+    public function update(Request $request, Category $category)
     {
-        //
+        // validation
+        $this->validate($request, [
+            'name' => "required|unique:categories,name,$category->id",
+        ]);
+
+        $category->name = $request->name;
+        $category->slug = Str::slug($request->name, '-');
+        $category->description = $request->description;
+        $category->save();
+
+        Session::flash('success', 'Category updated successfully');
+        return redirect()->back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    
+    public function destroy(Category $category)
     {
-        //
+        if($category){
+            $category->delete();
+
+            Session::flash('success', 'Category deleted successfully');
+            return redirect()->route('categories.index');
+        }
     }
 }
