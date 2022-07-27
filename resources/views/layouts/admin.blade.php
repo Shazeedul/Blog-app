@@ -24,9 +24,10 @@
   <!-- Daterange picker -->
   <link rel="stylesheet" href="{{asset('assets/admin/plugins/daterangepicker/daterangepicker.css')}}">
   <!-- summernote -->
-  <link rel="stylesheet" href="{{asset('assets/admin/plugins/summernote/summernote-bs4.min.css')}}">
+  {{-- <link rel="stylesheet" href="{{asset('assets/admin/plugins/summernote/summernote-bs4.min.css')}}"> --}}
   <!-- toastr css -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+  @yield('styles')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -153,6 +154,29 @@
               </li>
             </ul>
           </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tag"></i>
+              <p>
+                Post
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('posts.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Post List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('posts.create')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Create Post</p>
+                </a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -208,7 +232,7 @@
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="{{asset('assets/admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
 <!-- Summernote -->
-<script src="{{asset('assets/admin/plugins/summernote/summernote-bs4.min.js')}}"></script>
+{{-- <script src="{{asset('assets/admin/plugins/summernote/summernote-bs4.min.js')}}"></script> --}}
 <!-- overlayScrollbars -->
 <script src="{{asset('assets/admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 <!-- AdminLTE App -->
@@ -217,7 +241,7 @@
 <script src="{{asset('assets/admin/js/pages/dashboard.js')}}"></script>
 <!-- Toastr Js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-@yield('script')
+@yield('scripts')
 <script>
   @if(Session::has('success'))
     toastr.success("{{ Session::get('success') }}");
