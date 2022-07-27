@@ -50,6 +50,13 @@
         <a href="<?php echo e(route('logout')); ?>" class="nav-link">Logout</a>
       </li>
     </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link bg-danger rounded" href="<?php echo e(route('logout')); ?>" role="button">
+          <i class="fas fa-sign-out-alt"></i>
+        </a>
+      </li>
+    </ul>
 
     
   </nav>
@@ -145,14 +152,6 @@
                 </a>
               </li>
             </ul>
-          </li>
-          <li class="nav-item">
-            <a href="<?php echo e(route('logout')); ?>" class="nav-link bg-danger">
-              <i class="nav-icon fas fa-sign-out-alt"></i>
-              <p>
-                Logout
-              </p>
-            </a>
           </li>
         </ul>
       </nav>
