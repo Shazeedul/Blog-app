@@ -49,7 +49,9 @@
                                             
                                             <select name="category" id="category" class="form-control">
                                                 <option value="" style="display: none" selected>Select Category</option>
-                                                
+                                                <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $c): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <option value="<?php echo e($c->id); ?>" <?php if($post->category_id == $c->id): ?> selected <?php endif; ?>> <?php echo e($c->name); ?> </option>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                             </select>
                                         </div>
                                         <div class="form-group">
@@ -63,7 +65,7 @@
                                                 </div>
                                                 <div class="col-4 text-right">
                                                     <div style="max-width: 100px; max-height: 100px;overflow:hidden; margin-left: auto">
-                                                        <img src="<?php echo e(asset($post->image)); ?>" class="img-fluid" alt="">
+                                                        <img src="<?php echo e(asset('storage/'.$post->image)); ?>" class="img-fluid" alt="">
                                                     </div>
                                                 </div>
                                             </div>
@@ -74,7 +76,9 @@
                                                 <?php $__currentLoopData = $tags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?> 
                                                 <div class="custom-control custom-checkbox" style="margin-right: 20px">
                                                     <input class="custom-control-input" name="tags[]" type="checkbox" id="tag<?php echo e($tag->id); ?>" value="<?php echo e($tag->id); ?>"
-                                                    
+                                                    <?php $__currentLoopData = $post->tags; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $t): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                        <?php if($tag->id == $t->id): ?> checked <?php endif; ?>
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                     >
                                                     <label for="tag<?php echo e($tag->id); ?>" class="custom-control-label"><?php echo e($tag->name); ?></label>
                                                 </div>

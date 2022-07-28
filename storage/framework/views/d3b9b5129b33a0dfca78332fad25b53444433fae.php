@@ -55,7 +55,7 @@
                                         <td><?php echo e($post->id); ?></td>
                                         <td>
                                             <div style="max-width: 70px; max-height:70px; overflow:hidden">
-                                                <img src="<?php echo e(asset($post->image)); ?>" class="img-fluid img-rounded" alt="">
+                                                <img src="<?php echo e(asset('storage/'.$post->image)); ?>" class="img-fluid img-rounded" alt="">
                                             </div>
                                         </td>
                                         <td><?php echo e($post->title); ?></td>

@@ -9,7 +9,9 @@ use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File; 
 
 class PostController extends Controller
 {
@@ -39,11 +41,14 @@ class PostController extends Controller
         ]);
 
         // dd($request->all());
+        if ($request->hasFile('image')) {
+            $image = Storage::put('post', $request->file('image'));
+        }
 
         $post = Post::create([
             'title' => $request->title,
             'slug' => Str::slug($request->title),
-            'image' => 'image.jpg',
+            'image' => $image,
             'description' => $request->description,
             'category_id' => $request->category,
             'user_id' => auth()->user()->id,
@@ -51,14 +56,6 @@ class PostController extends Controller
         ]);
 
         $post->tags()->attach($request->tags);
-
-        if($request->hasFile('image')){
-            $image = $request->image;
-            $image_new_name = time() . '.' . $image->getClientOriginalExtension();
-            $image->move('storage/post/', $image_new_name);
-            $post->image = '/storage/post/' . $image_new_name;
-            $post->save();
-        }
 
         Session::flash('success', 'Post created successfully');
 
@@ -96,12 +93,16 @@ class PostController extends Controller
 
         $post->tags()->sync($request->tags);
 
+        $post = Post::findOrFail($post->id);
+        $old_file = $post->image;
         if($request->hasFile('image')){
-            $image = $request->image;
-            $image_new_name = time() . '.' . $image->getClientOriginalExtension();
-            $image->move('storage/post/', $image_new_name);
-            $post->image = '/storage/post/' . $image_new_name;
+            if ($post->image != null) {
+                $this->deleteFile($old_file);
+            }
+            $post->image = Storage::put('post', $request->file('image'));
         }
+
+        
 
         $post->save();
 
@@ -122,5 +123,11 @@ class PostController extends Controller
         }
 
         return redirect()->back();
+    }
+
+    private function deleteFile($path){
+        if (Storage::exists($path)) {
+            Storage::delete($path);
+        }
     }
 }

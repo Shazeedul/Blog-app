@@ -47,9 +47,6 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a href="<?php echo e(route('website')); ?>" class="nav-link">Home</a>
       </li>
-      <li class="nav-item">
-        <a href="<?php echo e(route('logout')); ?>" class="nav-link">Logout</a>
-      </li>
     </ul>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
@@ -176,6 +173,13 @@
                 </a>
               </li>
             </ul>
+          </li>
+          <li class="text-center mt-5">
+            <a href="<?php echo e(route('website')); ?>" class="btn btn-primary text-white" target="_blank">
+              <p class="mb-0">
+                View Website
+              </p>
+            </a>                    
           </li>
         </ul>
       </nav>

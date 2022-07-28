@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\TagController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\FrontEndController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,25 +19,17 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::get('/', function () {
-    return view('website.home');
-})->name('website');
+// Front End Routes
+Route::get('/', [FrontEndController::class,'home'])->name('website');
+Route::get('/about', [FrontEndController::class,'about'])->name('website.about');
+Route::get('/category/{slug}', [FrontEndController::class,'category'])->name('website.category');
+Route::get('/tag/{slug}', [FrontEndController::class,'tag'])->name('website.tag');
+Route::get('/contact', [FrontEndController::class,'contact'])->name('website.contact');
+Route::get('/post/{slug}', [FrontEndController::class,'post'])->name('website.post');
 
-Route::get('/about', function () {
-    return view('website.about');
-});
+Route::post('/contact', [FrontEndController::class,'send_message'])->name('website.contact');
 
-Route::get('/category', function () {
-    return view('website.category');
-});
 
-Route::get('/contact', function () {
-    return view('website.contact');
-});
-
-Route::get('/post', function () {
-    return view('website.post');
-});
 
 Route::get('/dashboard', function () {
     return view('website.dashboard');
@@ -48,10 +41,10 @@ Route::get('/dashboard', function () {
 
 //Admin Panel Route
 Route::prefix('admin')->middleware(['auth', 'role'])->group(function(){
-    Route::get('admin_dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
-    Route::resource('categories', CategoryController::class);
-    Route::resource('tags', TagController::class);
-    Route::resource('posts', PostController::class);
+    Route::get('/admin_dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::resource('/categories', CategoryController::class);
+    Route::resource('/tags', TagController::class);
+    Route::resource('/posts', PostController::class);
 });
 
 
