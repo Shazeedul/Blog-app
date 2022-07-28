@@ -1,6 +1,6 @@
-@extends('layouts.admin')
-@section('title', 'Dasboard')
-@section('content')
+
+<?php $__env->startSection('title', 'Dasboard'); ?>
+<?php $__env->startSection('content'); ?>
 
         <!-- Content Header (Page header) -->
         <div class="content-header">
@@ -11,7 +11,7 @@
                     </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="{{route('website')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="<?php echo e(route('website')); ?>">Home</a></li>
                     <li class="breadcrumb-item active">Dashboard v1</li>
                     </ol>
                 </div><!-- /.col -->
@@ -91,4 +91,5 @@
         </div><!-- /.container-fluid -->
         </section>
         <!-- /.content -->
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH G:\Web Development\Laravel\Blog-app\resources\views/admin/dashboard.blade.php ENDPATH**/ ?>
