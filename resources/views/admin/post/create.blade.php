@@ -78,10 +78,11 @@
                                                 <label for="exampleInputPassword1">Description</label>
                                                 <textarea name="description" id="description" rows="4" class="form-control" placeholder="Enter description">{{ old('description') }}</textarea>
                                             </div>
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                            </div>
                                         </div>
-                                        <div class="card-footer">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
-                                        </div>
+                                        
                                     </form>
                                 </div>
                             </div>

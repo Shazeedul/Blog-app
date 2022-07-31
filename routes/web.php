@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\TagController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FrontEndController;
@@ -18,6 +19,7 @@ use App\Http\Controllers\FrontEndController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 
 // Front End Routes
 Route::get('/', [FrontEndController::class,'home'])->name('website');
@@ -45,6 +47,9 @@ Route::prefix('admin')->middleware(['auth', 'role'])->group(function(){
     Route::resource('/categories', CategoryController::class);
     Route::resource('/tags', TagController::class);
     Route::resource('/posts', PostController::class);
+    Route::resource('/users', UserController::class);
+    Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');
+    Route::post('/profile', [UserController::class, 'profile_update'])->name('user.profile.update');
 });
 
 
