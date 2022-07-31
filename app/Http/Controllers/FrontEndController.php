@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Contact;
 use App\Models\Post;
 use App\Models\Tag;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -27,7 +29,9 @@ class FrontEndController extends Controller
     }
     
     public function about(){
-        return view('website.about');
+        $user = User::first();
+
+        return view('website.about', compact('user'));
     }
     
     public function category($slug){
@@ -76,7 +80,8 @@ class FrontEndController extends Controller
         }
     }
     
-    public function send_message(Request $request){
+    public function send_message(Request $request)
+    {
         $this->validate($request, [
             'name' => 'required|max:200',
             'email' => 'required|email|max:200',

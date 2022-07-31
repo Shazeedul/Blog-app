@@ -17,8 +17,12 @@
       <div class="container">
         <div class="row">
           <div class="col-md-7 mb-5">
-            
-              
+            <form action="<?php echo e(route('website.contact')); ?>" method="post" class="p-5 bg-white">
+              <?php echo csrf_field(); ?> 
+              <?php echo $__env->make('includes.errors', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+              <?php if(Session::has('message-send')): ?>
+                <div class="alert alert-success"><?php echo e(Session::get('message-send')); ?></div>
+              <?php endif; ?>
               <div class="row form-group">
                 <div class="col-md-12">
                   <label class="text-black" for="fname">Name</label>
@@ -54,7 +58,7 @@
               </div>
 
   
-            
+            </form>
           </div>
           <div class="col-md-5">
             

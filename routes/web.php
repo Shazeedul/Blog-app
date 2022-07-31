@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\ContactController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FrontEndController;
@@ -52,13 +54,13 @@ Route::prefix('admin')->middleware(['auth', 'role'])->group(function(){
     Route::post('/profile', [UserController::class, 'profile_update'])->name('user.profile.update');
 
     // setting
-    Route::get('setting', 'SettingController@edit')->name('setting.index');
-    Route::post('setting', 'SettingController@update')->name('setting.update');
+    Route::get('setting', [SettingController::class,'edit'])->name('setting.index');
+    Route::post('setting', [SettingController::class, 'update'])->name('setting.update');
 
     // Contact message
-    Route::get('/contact', 'ContactController@index')->name('contact.index');
-    Route::get('/contact/show/{id}', 'ContactController@show')->name('contact.show');
-    Route::delete('/contact/delete/{id}', 'ContactController@destroy')->name('contact.destroy');
+    Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+    Route::get('/contact/show/{id}', [ContactController::class, 'show'])->name('contact.show');
+    Route::delete('/contact/delete/{id}', [ContactController::class, 'destroy'])->name('contact.destroy');
 });
 
 

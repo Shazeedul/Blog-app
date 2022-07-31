@@ -40,7 +40,6 @@ class PostController extends Controller
             'category' => 'required',
         ]);
 
-        // dd($request->all());
         if ($request->hasFile('image')) {
             $image = Storage::put('post', $request->file('image'));
         }

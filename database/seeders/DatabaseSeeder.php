@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             // CommentsSeeder::class,
             CategoriesSeeder::class,
             TagsSeeder::class,
+            SettingSeeder::class,
         ]);
     }
 }

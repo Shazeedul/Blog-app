@@ -17,10 +17,11 @@
         <div class="container">
         <div class="row">
             <div class="col-md-6 order-md-2">
-            
+            <img src="<?php if($user->image): ?><?php echo e(asset('storage/'.$user->image)); ?> <?php else: ?> <?php echo e(asset('assets/website/images/profile-avatar.png')); ?> <?php endif; ?>" alt="Image" class="img-fluid">
             </div>
             <div class="col-md-5 mr-auto order-md-1">
-                
+                <h2> <?php echo e($user->fname.' '.$user->lname); ?></h2>
+                <p><?php echo e($user->description); ?></p>
             </div>
         </div>
         </div>

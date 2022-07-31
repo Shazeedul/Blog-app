@@ -17,12 +17,12 @@
       <div class="container">
         <div class="row">
           <div class="col-md-7 mb-5">
-            {{-- <form action="{{ route('website.contact') }}" method="post" class="p-5 bg-white"> --}}
-              {{-- @csrf 
+            <form action="{{ route('website.contact') }}" method="post" class="p-5 bg-white">
+              @csrf 
               @include('includes.errors')
               @if(Session::has('message-send'))
                 <div class="alert alert-success">{{ Session::get('message-send') }}</div>
-              @endif --}}
+              @endif
               <div class="row form-group">
                 <div class="col-md-12">
                   <label class="text-black" for="fname">Name</label>
@@ -58,7 +58,7 @@
               </div>
 
   
-            {{-- </form> --}}
+            </form>
           </div>
           <div class="col-md-5">
             

@@ -5,82 +5,86 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class SettingController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Setting  $setting
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show(Setting $setting)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Setting  $setting
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit(Setting $setting)
     {
-        //
+        $setting = Setting::first();
+        
+        return view('admin.setting.edit', compact('setting'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Setting  $setting
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, Setting $setting)
     {
-        //
+        // dd($request->all());
+        $this->validate($request, [
+            'name' => 'required',
+            'copyright' => 'required',
+        ]);
+
+        $setting = Setting::first();
+        $setting->update($request->all());
+        // $setting = Setting::findOrFail($setting->id);
+        $old_file = $setting->site_logo;
+
+        // if($request->hasFile('site_logo')){
+        //     $image = $request->site_logo;
+        //     $image_new_name = time() . '.' . $image->getClientOriginalExtension();
+        //     $image->move('storage/setting/', $image_new_name);
+        //     $setting->site_logo = '/storage/setting/' . $image_new_name;
+        //     $setting->save();
+        // }
+        
+        if($request->hasFile('site_logo')){
+            if ($setting->site_logo != null) {
+                $this->deleteFile($old_file);
+            }
+            $setting->site_logo = Storage::put('setting', $request->file('site_logo'));
+            $setting->save();
+        }
+
+        Session::flash('success', 'Setting updated successfully');
+        return redirect()->back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Setting  $setting
-     * @return \Illuminate\Http\Response
-     */
+    
     public function destroy(Setting $setting)
     {
         //
+    }
+
+    private function deleteFile($path){
+        if (Storage::exists($path)) {
+            Storage::delete($path);
+        }
     }
 }

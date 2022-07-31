@@ -1,13 +1,13 @@
-﻿
+
 <?php $__env->startSection('content'); ?>
     <div class="py-5 bg-light">
       <div class="container">
         <div class="row">
           <div class="col-md-6">
-            <span>Category</span>
-            <h3><?php echo e($category->name); ?></h3>
-            <?php if($category->description): ?>
-              <p><?php echo e($category->description); ?></p>
+            <span>Tag</span>
+            <h3><?php echo e($tag->name); ?></h3>
+            <?php if($tag->description): ?>
+              <p><?php echo e($tag->description); ?></p>
             <?php endif; ?>
           </div>
         </div>
@@ -33,8 +33,8 @@
                 <span>&nbsp;-&nbsp; <?php echo e($post->created_at->format('M d, Y')); ?></span>
               </div>
               
-              <p> <?php echo Str::limit($post->description, 50); ?> </p>
-              <p><a href="<?php echo e(route('website.post', ['slug' => $post->slug])); ?>">Read More</a></p>
+                <p><?php echo Str::limit($post->description, 50); ?></p>
+                <p><a href="#">Read More</a></p>
               </div>
             </div>
           </div>
@@ -49,5 +49,4 @@
     </div>
     </div>
 <?php $__env->stopSection(); ?>
-    
-<?php echo $__env->make('layouts.website', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\admin\Downloads\Blog-app\resources\views/website/category.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.website', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\admin\Downloads\Blog-app\resources\views/website/tag.blade.php ENDPATH**/ ?>
