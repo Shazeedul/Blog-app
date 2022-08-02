@@ -54,6 +54,21 @@
                 <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                   <li><a href="<?php echo e(route('website.category', ['slug' => $category->slug])); ?>"><?php echo e($category->name); ?></a></li>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                <li>
+                  <?php if(Route::has('login')): ?>
+                      
+                          <?php if(auth()->guard()->check()): ?>
+                              <a href="<?php echo e(url('/dashboard')); ?>" class="">Dashboard</a>
+                          <?php else: ?>
+                              <a href="<?php echo e(route('login')); ?>" class="pr-4">Log in</a>
+
+                              <?php if(Route::has('register')): ?>
+                                  <a href="<?php echo e(route('register')); ?>" class="">Register</a>
+                              <?php endif; ?>
+                          <?php endif; ?>
+                      
+                  <?php endif; ?>
+                </li>
                 <li class="d-none d-lg-inline-block"><a href="#" class="js-search-toggle"><span class="icon-search"></span></a></li>
               </ul>
             </nav>

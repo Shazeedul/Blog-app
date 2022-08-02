@@ -54,6 +54,21 @@
                 @foreach($categories as $category)
                   <li><a href="{{ route('website.category', ['slug' => $category->slug]) }}">{{ $category->name }}</a></li>
                 @endforeach
+                <li>
+                  @if (Route::has('login'))
+                      
+                          @auth
+                              <a href="{{ url('/dashboard') }}" class="">Dashboard</a>
+                          @else
+                              <a href="{{ route('login') }}" class="pr-4">Log in</a>
+
+                              @if (Route::has('register'))
+                                  <a href="{{ route('register') }}" class="">Register</a>
+                              @endif
+                          @endauth
+                      
+                  @endif
+                </li>
                 <li class="d-none d-lg-inline-block"><a href="#" class="js-search-toggle"><span class="icon-search"></span></a></li>
               </ul>
             </nav>
