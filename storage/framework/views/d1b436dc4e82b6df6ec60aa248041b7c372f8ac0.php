@@ -1,6 +1,6 @@
-@extends('layouts.admin')
 
-@section('content')
+
+<?php $__env->startSection('content'); ?>
 <!-- Content Header (Page header) -->
 <div class="content-header">
     <div class="container-fluid">
@@ -10,7 +10,7 @@
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="{{ route('website') }}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="<?php echo e(route('website')); ?>">Home</a></li>
                     <li class="breadcrumb-item active">Edit Setting</li>
                 </ol>
             </div><!-- /.col -->
@@ -34,60 +34,60 @@
                         <div class="row">
                             <div class="col-12 col-lg-8 offset-lg-2 col-md-8 offset-md-2">
                                 <div class="card-body">
-                                    <form action="{{ route('setting.update') }}" method="POST" enctype="multipart/form-data">
-                                        @csrf 
-                                        @include('includes.errors')
+                                    <form action="<?php echo e(route('setting.update')); ?>" method="POST" enctype="multipart/form-data">
+                                        <?php echo csrf_field(); ?> 
+                                        <?php echo $__env->make('includes.errors', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                                         <div class="form-group">
                                             <label for="name">Site Name</label>
-                                            <input type="name" name="name" value="{{ $setting->name }}" class="form-control" placeholder="Enter name">
+                                            <input type="name" name="name" value="<?php echo e($setting->name); ?>" class="form-control" placeholder="Enter name">
                                         </div>
                                         <div class="row">
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <label for="facebook">Facebook</label>
-                                                    <input type="facebook" name="facebook" value="{{ $setting->facebook }}" class="form-control" placeholder="facebook url">
+                                                    <input type="facebook" name="facebook" value="<?php echo e($setting->facebook); ?>" class="form-control" placeholder="facebook url">
                                                 </div>
                                             </div>
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <label for="twitter">Twitter</label>
-                                                    <input type="twitter" name="twitter" value="{{ $setting->twitter }}" class="form-control" placeholder="twitter url">
+                                                    <input type="twitter" name="twitter" value="<?php echo e($setting->twitter); ?>" class="form-control" placeholder="twitter url">
                                                 </div>
                                             </div>
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <label for="instagram">Instagram</label>
-                                                    <input type="instagram" name="instagram" value="{{ $setting->instagram }}" class="form-control" placeholder="instagram url">
+                                                    <input type="instagram" name="instagram" value="<?php echo e($setting->instagram); ?>" class="form-control" placeholder="instagram url">
                                                 </div>
                                             </div>
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <label for="reddit">Reddit</label>
-                                                    <input type="reddit" name="reddit" value="{{ $setting->reddit }}" class="form-control" placeholder="reddit url">
+                                                    <input type="reddit" name="reddit" value="<?php echo e($setting->reddit); ?>" class="form-control" placeholder="reddit url">
                                                 </div>
                                             </div>
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <label for="email">Email</label>
-                                                    <input type="email" name="email" value="{{ $setting->email }}" class="form-control" placeholder="email url">
+                                                    <input type="email" name="email" value="<?php echo e($setting->email); ?>" class="form-control" placeholder="email url">
                                                 </div>
                                             </div>
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <label for="copyright">Copyright</label>
-                                                    <input type="copyright" name="copyright" value="{{ $setting->copyright }}" class="form-control" placeholder="copyright">
+                                                    <input type="copyright" name="copyright" value="<?php echo e($setting->copyright); ?>" class="form-control" placeholder="copyright">
                                                 </div>
                                             </div>
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <label for="email">Contact Phone Number</label>
-                                                    <input type="text" name="phone" value="{{ $setting->phone }}" class="form-control" placeholder="phone number">
+                                                    <input type="text" name="phone" value="<?php echo e($setting->phone); ?>" class="form-control" placeholder="phone number">
                                                 </div>
                                             </div>
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <label for="address">Location</label>
-                                                    <textarea name="address" id="address" class="form-control" rows="1" placeholder="enter address">{{ $setting->address}}</textarea>
+                                                    <textarea name="address" id="address" class="form-control" rows="1" placeholder="enter address"><?php echo e($setting->address); ?></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -102,14 +102,14 @@
                                                 </div>
                                                 <div class="col-4 text-right">
                                                     <div style="max-width: 100px; max-height: 100px;overflow:hidden; margin-left: auto">
-                                                        <img src="{{ asset('storage/'.$setting->site_logo) }}" class="img-fluid" alt="">
+                                                        <img src="<?php echo e(asset('storage/'.$setting->site_logo)); ?>" class="img-fluid" alt="">
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="description">Site Description</label>
-                                            <textarea name="description" id="description" rows="3" class="form-control" placeholder="Enter description">{{ $setting->description }}</textarea>
+                                            <textarea name="description" id="description" rows="3" class="form-control" placeholder="Enter description"><?php echo e($setting->description); ?></textarea>
                                         </div>
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-primary">Update</button>
@@ -124,12 +124,13 @@
         </div>
     </div>
 </div>
-@endsection
-@section('scripts')
-<script src="{{ asset('assets/admin/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('scripts'); ?>
+<script src="<?php echo e(asset('assets/admin/plugins/bs-custom-file-input/bs-custom-file-input.min.js')); ?>"></script>
 <script>
     $(document).ready(function() {
             bsCustomFileInput.init()
         });
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.admin', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH G:\Web Development\Laravel\Blog-app\resources\views/admin/setting/edit.blade.php ENDPATH**/ ?>

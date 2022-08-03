@@ -1,6 +1,6 @@
-@extends('layouts.website')
-@section('content')    
-    <div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('{{ asset('assets/website/images/img_4.jpg') }}');">
+
+<?php $__env->startSection('content'); ?>    
+    <div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('<?php echo e(asset('assets/website/images/img_4.jpg')); ?>');">
       <div class="container">
         <div class="row same-height justify-content-center">
           <div class="col-md-12 col-lg-10">
@@ -17,12 +17,12 @@
       <div class="container">
         <div class="row">
           <div class="col-md-7 mb-5">
-            <form action="{{ route('website.contact') }}" method="post" class="p-5 bg-white">
-              @csrf 
-              @include('includes.errors')
-              @if(Session::has('message-send'))
-                <div class="alert alert-success">{{ Session::get('message-send') }}</div>
-              @endif
+            <form action="<?php echo e(route('website.contact')); ?>" method="post" class="p-5 bg-white">
+              <?php echo csrf_field(); ?> 
+              <?php echo $__env->make('includes.errors', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+              <?php if(Session::has('message-send')): ?>
+                <div class="alert alert-success"><?php echo e(Session::get('message-send')); ?></div>
+              <?php endif; ?>
               <div class="row form-group">
                 <div class="col-md-12">
                   <label class="text-black" for="fname">Name</label>
@@ -64,13 +64,13 @@
             
             <div class="p-4 mb-3 bg-white">
               <p class="mb-0 font-weight-bold">Address</p>
-              <p class="mb-4">{{ $setting->address }}</p>
+              <p class="mb-4"><?php echo e($setting->address); ?></p>
 
               <p class="mb-0 font-weight-bold">Phone</p>
-              <p class="mb-4"><a href="#">{{ $setting->phone }}</a></p>
+              <p class="mb-4"><a href="#"><?php echo e($setting->phone); ?></a></p>
 
               <p class="mb-0 font-weight-bold">Email Address</p>
-              <p class="mb-0"><a href="#">{{ $setting->email }}</a></p>
+              <p class="mb-0"><a href="#"><?php echo e($setting->email); ?></a></p>
 
             </div>
 
@@ -78,4 +78,5 @@
         </div>
       </div>
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.website', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH G:\Web Development\Laravel\Blog-app\resources\views/website/contact.blade.php ENDPATH**/ ?>

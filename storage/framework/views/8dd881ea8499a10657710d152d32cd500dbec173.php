@@ -65,7 +65,7 @@
                                                 </div>
                                                 <div class="col-4 text-right">
                                                     <div style="max-width: 100px; max-height: 100px;overflow:hidden; margin-left: auto">
-                                                        <img src="<?php echo e(asset($post->image)); ?>" class="img-fluid" alt="">
+                                                        <img src="<?php echo e(asset('storage/'.$post->image)); ?>" class="img-fluid" alt="">
                                                     </div>
                                                 </div>
                                             </div>

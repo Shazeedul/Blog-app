@@ -45,7 +45,6 @@ class SettingController extends Controller
     
     public function update(Request $request, Setting $setting)
     {
-        // dd($request->all());
         $this->validate($request, [
             'name' => 'required',
             'copyright' => 'required',
@@ -63,15 +62,15 @@ class SettingController extends Controller
         //     $setting->site_logo = '/storage/setting/' . $image_new_name;
         //     $setting->save();
         // }
-        
+
         if($request->hasFile('site_logo')){
             if ($setting->site_logo != null) {
                 $this->deleteFile($old_file);
             }
             $setting->site_logo = Storage::put('setting', $request->file('site_logo'));
-            $setting->save();
+            
         }
-
+        $setting->save();
         Session::flash('success', 'Setting updated successfully');
         return redirect()->back();
     }
