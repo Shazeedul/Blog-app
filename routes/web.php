@@ -11,16 +11,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FrontEndController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+
 
 
 // Front End Routes
@@ -32,6 +23,9 @@ Route::get('/contact', [FrontEndController::class,'contact'])->name('website.con
 Route::get('/post/{slug}', [FrontEndController::class,'post'])->name('website.post');
 
 Route::post('/contact', [FrontEndController::class,'send_message'])->name('website.contact');
+
+Route::post('/comment/store', [FrontEndController::class,'comment'])->name('website.comment');
+Route::post('/reply/store', [FrontEndController::class,'replyComment'])->name('website.reply');
 
 
 

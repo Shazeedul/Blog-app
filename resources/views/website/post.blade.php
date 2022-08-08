@@ -46,9 +46,20 @@
 
 
             <div class="pt-5">
-              <h3 class="mb-5" id="dsq-count-scr">6 Comments</h3>
-                <a href="{{ route('website.post', ['slug' => $post->slug]) }}#disqus_thread">Comments</a>
-              <div id="disqus_thread"></div>
+              <h3 class="mb-5" id="dsq-count-scr">Comments</h3>
+              @include('website.replys', ['comments' => $post->comments, 'post_id' => $post->id])
+                {{-- <a href="{{ route('website.post', ['slug' => $post->slug]) }}#disqus_thread">Comments</a> --}}
+              <h5>Leave a comment</h5>
+              <form method="post" action="{{ route('website.comment') }}">
+                  @csrf
+                  <div class="form-group">
+                      <input type="text" name="comment" class="form-control" />
+                      <input type="hidden" name="post_id" value="{{ $post->id }}" />
+                  </div>
+                  <div class="form-group">
+                      <input type="submit" class="btn btn-sm btn-outline-danger py-0" style="font-size: 0.8em;" value="Add Comment" />
+                  </div>
+              </form>
               {{-- <ul class="comment-list">
                 <li class="comment">
                   <div class="vcard">

@@ -9,7 +9,7 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['created_at', 'updated_at'];
+    protected $guarded = [];
 
     protected $dates = ['published_at'];
 
@@ -25,5 +25,10 @@ class Post extends Model
     public function tags()
     {
         return $this->belongsToMany(Tag::class);
+    }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable',)->whereNull('parent_id');
     }
 }
