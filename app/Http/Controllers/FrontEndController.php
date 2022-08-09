@@ -85,17 +85,21 @@ class FrontEndController extends Controller
     {
         $comment = new Comment();
         
+        // $comment = Comment::create([
+        //     'comment' => $request->comment,
+        //   ]);
         $comment->comment = $request->comment;
+
 
         $comment->user()->associate($request->user());
 
         $post = Post::findOrFail($request->post_id);
         
-
+        // $post->user()->comments()->save($comment);
         $post->comments()->save($comment);
         
 
-        return back();
+        return back()->withSuccess("Your comment added successfully, thanks");
     }
     
     public function replyComment(Request $request)
@@ -112,7 +116,7 @@ class FrontEndController extends Controller
 
         $post->comments()->save($reply);
 
-        return back();
+        return back()->withSuccess("Your replied added successfully, thanks");
     }
     
     public function send_message(Request $request)

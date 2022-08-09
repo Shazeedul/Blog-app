@@ -53,7 +53,7 @@
                                         <td>{{ $category->name }}</td>
                                         <td>{{ $category->slug }}</td>
                                         <td>
-                                            {{ $category->id }}
+                                            {{ $category->post->count() }}
                                         </td>
                                         <td class="d-flex">
                                             <a href="{{ route('categories.edit', [$category->id]) }}" class="btn btn-sm btn-primary mr-1"> <i class="fas fa-edit"></i> </a>

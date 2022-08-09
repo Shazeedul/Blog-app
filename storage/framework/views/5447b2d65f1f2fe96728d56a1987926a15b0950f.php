@@ -53,7 +53,7 @@
                                         <td><?php echo e($category->name); ?></td>
                                         <td><?php echo e($category->slug); ?></td>
                                         <td>
-                                            <?php echo e($category->id); ?>
+                                            <?php echo e($category->post->count()); ?>
 
                                         </td>
                                         <td class="d-flex">

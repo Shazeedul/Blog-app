@@ -41,7 +41,6 @@
                                         <th style="width: 10px">#</th>
                                         <th>Name</th>
                                         <th>Slug</th>
-                                        <th>Post Count</th>
                                         <th style="width: 40px">Action</th>
                                     </tr>
                                 </thead>
@@ -52,10 +51,6 @@
                                         <td><?php echo e($tag->id); ?></td>
                                         <td><?php echo e($tag->name); ?></td>
                                         <td><?php echo e($tag->slug); ?></td>
-                                        <td>
-                                            <?php echo e($tag->id); ?>
-
-                                        </td>
                                         <td class="d-flex">
                                             <a href="<?php echo e(route('tags.edit', [$tag->id])); ?>" class="btn btn-sm btn-primary mr-1"> <i class="fas fa-edit"></i> </a>
                                             <form action="<?php echo e(route('tags.destroy', [$tag->id])); ?>" class="mr-1" method="POST">
