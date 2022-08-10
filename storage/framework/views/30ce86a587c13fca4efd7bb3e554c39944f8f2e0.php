@@ -58,7 +58,7 @@
                   <?php if(Route::has('login')): ?>
                       
                           <?php if(auth()->guard()->check()): ?>
-                              <a href="<?php echo e(url('/dashboard')); ?>" class="">Dashboard</a>
+                              <a href="<?php echo e(route('website.profile')); ?>" class="">Profile</a>
                           <?php else: ?>
                               <a href="<?php echo e(route('login')); ?>" class="pr-4">Log in</a>
 

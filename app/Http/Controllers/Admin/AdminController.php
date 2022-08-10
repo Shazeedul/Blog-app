@@ -11,7 +11,8 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $posts = Post::orderBy('created_at', 'DESC')->take(10)->get();
         $postCount = Post::all()->count();
         $categoryCount = Category::all()->count();

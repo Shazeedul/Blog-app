@@ -35,7 +35,7 @@
                     <div class="icon">
                         <i class="ion ion-calendar"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="<?php echo e(route('posts.index')); ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -49,7 +49,7 @@
                     <div class="icon">
                         <i class="ion ion-pricetag"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="<?php echo e(route('categories.index')); ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -63,7 +63,7 @@
                     <div class="icon">
                         <i class="ion ion-pricetags"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="<?php echo e(route('tags.index')); ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -78,7 +78,7 @@
                         
                         <i class="ion ion-person-add"></i>
                     </div>
-                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                    <a href="<?php echo e(route('users.index')); ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -91,7 +91,7 @@
                         <div class="card-header">
                             <div class="d-flex justify-content-between align-items-center">
                                 <h3 class="card-title">Post List</h3>
-                                <a href="" class="btn btn-primary">Post List</a>
+                                <a href="<?php echo e(route('posts.create')); ?>" class="btn btn-primary">Post Add</a>
                             </div>
                         </div>
                         <!-- /.card-header -->

@@ -10,9 +10,7 @@ use App\Http\Controllers\Admin\ContactController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FrontEndController;
-
-
-
+use App\Http\Controllers\ProfileController;
 
 // Front End Routes
 Route::get('/', [FrontEndController::class,'home'])->name('website');
@@ -29,9 +27,7 @@ Route::post('/reply/store', [FrontEndController::class,'replyComment'])->name('w
 
 
 
-Route::get('/dashboard', function () {
-    return view('website.dashboard');
-});
+Route::get('/profile', [ProfileController::class, 'index'])->name('website.profile');
 
 
 
@@ -39,7 +35,7 @@ Route::get('/dashboard', function () {
 
 //Admin Panel Route
 Route::prefix('admin')->middleware(['auth', 'role'])->group(function(){
-    Route::get('/admin_dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::resource('/categories', CategoryController::class);
     Route::resource('/tags', TagController::class);
     Route::resource('/posts', PostController::class);
