@@ -30,7 +30,7 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <h3 class="card-title">Tag List</h3>
                             
-                                <a href="<?php echo e(route('tags.create')); ?>" class="btn btn-primary">Create Tag</a>
+                                <a href="<?php echo e(route('tags.create')); ?>" class="btn btn-primary">Add Tag</a>
                             </div>
                         </div>
                         

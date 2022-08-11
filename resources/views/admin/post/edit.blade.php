@@ -29,7 +29,7 @@
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
                             <h3 class="card-title">Edit Post - {{ $post->name }}</h3>
-                            <a href="{{ route('posts.index') }}" class="btn btn-primary">Go Back to Post List</a>
+                            <a href="{{ route('posts.index') }}" class="btn btn-primary">Back</a>
                         </div>
                     </div>
                     <div class="card-body p-0">
@@ -91,7 +91,7 @@
                                                 placeholder="Enter description">{{ $post->description }}</textarea>
                                         </div>
                                         <div class="form-group">
-                                            <button type="submit" class="btn btn-lg btn-primary">Update Post</button>
+                                            <button type="submit" class="btn btn-primary">Update</button>
                                         </div>
                                     </form>
                                 </div>

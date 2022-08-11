@@ -30,7 +30,7 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <h3 class="card-title">Post List</h3>
                             
-                                <a href="{{route('posts.create')}}" class="btn btn-primary">Create Post</a>
+                                <a href="{{route('posts.create')}}" class="btn btn-primary">Add Post</a>
                             </div>
                         </div>
                         

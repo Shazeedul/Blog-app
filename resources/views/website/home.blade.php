@@ -98,10 +98,8 @@
 
   <div class="site-section bg-light">
     <div class="container">
-
       <div class="row align-items-stretch retro-layout">
-        
-        @foreach($lastFooterPost as $post)
+            @foreach($lastFooterPost as $post)
             <div class="col-md-5 order-md-2">
                 <a href="{{ route('website.post', ['slug' => $post->slug]) }}" class="hentry img-1 h-100 gradient"
                     style="background-image: url('{{ asset('storage/'.$post->image) }}');">
@@ -114,36 +112,33 @@
             </div>
             @endforeach
             <div class="col-md-7">
-                @foreach($firstFooterPost as $post)
-                <a href="{{ route('website.post', ['slug' => $post->slug]) }}"
-                    class="hentry img-2 v-height mb30 gradient"
-                    style="background-image: url('{{ asset('storage/'.$post->image) }}');">
-                    <span class="post-category text-white bg-success">{{ $post->category->name }}</span>
-                    <div class="text text-sm">
-                        <h2>{{ $post->title }}</h2>
-                        <span class="date">{{ $post->created_at->format('M d, Y')}}</span>
-                    </div>
-                </a>
-                @endforeach
-                <div class="two-col d-block d-md-flex justify-content-between">
-                    @foreach($firstfooterPosts2 as $post)
-                    <a href="{{ route('website.post', ['slug' => $post->slug]) }}"
-                        class="hentry v-height img-2 gradient" style="background-image: url('{{ asset('storage/'.$post->image) }}');">
-                        <span class="post-category text-white bg-primary">{{ $post->category->name }}</span>
-                        <div class="text text-sm">
-                            <h2>{{ $post->title }}</h2>
-                            <span class="date">{{ $post->created_at->format('M d, Y')}}</span>
-                        </div>
-                    </a>
-                    @endforeach
-          </div>  
-          
+            @foreach($firstFooterPost as $post)
+            <a href="{{ route('website.post', ['slug' => $post->slug]) }}"
+                class="hentry img-2 v-height mb30 gradient"
+                style="background-image: url('{{ asset('storage/'.$post->image) }}');">
+                <span class="post-category text-white bg-success">{{ $post->category->name }}</span>
+                <div class="text text-sm">
+                    <h2>{{ $post->title }}</h2>
+                    <span class="date">{{ $post->created_at->format('M d, Y')}}</span>
+                </div>
+            </a>
+            @endforeach
+            <div class="two-col d-block d-md-flex justify-content-between">
+            @foreach($firstfooterPosts2 as $post)
+            <a href="{{ route('website.post', ['slug' => $post->slug]) }}"
+                class="hentry v-height img-2 gradient" style="background-image: url('{{ asset('storage/'.$post->image) }}');">
+                <span class="post-category text-white bg-primary">{{ $post->category->name }}</span>
+                <div class="text text-sm">
+                    <h2>{{ $post->title }}</h2>
+                    <span class="date">{{ $post->created_at->format('M d, Y')}}</span>
+                </div>
+            </a>
+            @endforeach
+            </div>  
         </div>
       </div>
-
     </div>
   </div>
-
   <div class="site-section bg-lightx">
     <div class="container">
       <div class="row justify-content-center text-center">

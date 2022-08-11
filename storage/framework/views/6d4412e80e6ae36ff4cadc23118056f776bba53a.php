@@ -90,10 +90,8 @@
 
   <div class="site-section bg-light">
     <div class="container">
-
       <div class="row align-items-stretch retro-layout">
-        
-        <?php $__currentLoopData = $lastFooterPost; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <?php $__currentLoopData = $lastFooterPost; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <div class="col-md-5 order-md-2">
                 <a href="<?php echo e(route('website.post', ['slug' => $post->slug])); ?>" class="hentry img-1 h-100 gradient"
                     style="background-image: url('<?php echo e(asset('storage/'.$post->image)); ?>');">
@@ -106,36 +104,33 @@
             </div>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             <div class="col-md-7">
-                <?php $__currentLoopData = $firstFooterPost; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <a href="<?php echo e(route('website.post', ['slug' => $post->slug])); ?>"
-                    class="hentry img-2 v-height mb30 gradient"
-                    style="background-image: url('<?php echo e(asset('storage/'.$post->image)); ?>');">
-                    <span class="post-category text-white bg-success"><?php echo e($post->category->name); ?></span>
-                    <div class="text text-sm">
-                        <h2><?php echo e($post->title); ?></h2>
-                        <span class="date"><?php echo e($post->created_at->format('M d, Y')); ?></span>
-                    </div>
-                </a>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                <div class="two-col d-block d-md-flex justify-content-between">
-                    <?php $__currentLoopData = $firstfooterPosts2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <a href="<?php echo e(route('website.post', ['slug' => $post->slug])); ?>"
-                        class="hentry v-height img-2 gradient" style="background-image: url('<?php echo e(asset('storage/'.$post->image)); ?>');">
-                        <span class="post-category text-white bg-primary"><?php echo e($post->category->name); ?></span>
-                        <div class="text text-sm">
-                            <h2><?php echo e($post->title); ?></h2>
-                            <span class="date"><?php echo e($post->created_at->format('M d, Y')); ?></span>
-                        </div>
-                    </a>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-          </div>  
-          
+            <?php $__currentLoopData = $firstFooterPost; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <a href="<?php echo e(route('website.post', ['slug' => $post->slug])); ?>"
+                class="hentry img-2 v-height mb30 gradient"
+                style="background-image: url('<?php echo e(asset('storage/'.$post->image)); ?>');">
+                <span class="post-category text-white bg-success"><?php echo e($post->category->name); ?></span>
+                <div class="text text-sm">
+                    <h2><?php echo e($post->title); ?></h2>
+                    <span class="date"><?php echo e($post->created_at->format('M d, Y')); ?></span>
+                </div>
+            </a>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            <div class="two-col d-block d-md-flex justify-content-between">
+            <?php $__currentLoopData = $firstfooterPosts2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <a href="<?php echo e(route('website.post', ['slug' => $post->slug])); ?>"
+                class="hentry v-height img-2 gradient" style="background-image: url('<?php echo e(asset('storage/'.$post->image)); ?>');">
+                <span class="post-category text-white bg-primary"><?php echo e($post->category->name); ?></span>
+                <div class="text text-sm">
+                    <h2><?php echo e($post->title); ?></h2>
+                    <span class="date"><?php echo e($post->created_at->format('M d, Y')); ?></span>
+                </div>
+            </a>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            </div>  
         </div>
       </div>
-
     </div>
   </div>
-
   <div class="site-section bg-lightx">
     <div class="container">
       <div class="row justify-content-center text-center">

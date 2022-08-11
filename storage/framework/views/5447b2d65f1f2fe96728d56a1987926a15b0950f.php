@@ -30,7 +30,7 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <h3 class="card-title">Category List</h3>
                             
-                                <a href="<?php echo e(route('categories.create')); ?>" class="btn btn-primary">Create Category</a>
+                                <a href="<?php echo e(route('categories.create')); ?>" class="btn btn-primary">Add Category</a>
                             </div>
                         </div>
                         

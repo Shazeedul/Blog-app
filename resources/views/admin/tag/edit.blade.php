@@ -29,7 +29,7 @@
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
                             <h3 class="card-title">Edit Tag - {{ $tag->name }}</h3>
-                            <a href="{{ route('tags.index') }}" class="btn btn-primary">Go Back to Tag List</a>
+                            <a href="{{ route('tags.index') }}" class="btn btn-primary">Back</a>
                         </div>
                     </div>
                     <div class="card-body p-0">
@@ -49,9 +49,7 @@
                                             <textarea name="description" id="description" rows="4" class="form-control"
                                                 placeholder="Enter description"> {{ $tag->description }} </textarea>
                                         </div>
-                                    </div>
-                                    <div class="card-footer">
-                                        <button type="submit" class="btn btn-primary">Update Tag</button>
+                                        <button type="submit" class="btn btn-primary">Update</button>
                                     </div>
                                 </form>
                             </div>

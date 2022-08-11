@@ -30,7 +30,7 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <h3 class="card-title">Create Tag </h3>
                             
-                                <a href="{{route('tags.index')}}" class="btn btn-primary">Back to Tag List</a>
+                                <a href="{{route('tags.index')}}" class="btn btn-primary">Back</a>
                             </div>
                         </div>
                         

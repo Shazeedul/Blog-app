@@ -28,9 +28,9 @@
                     <div class="card m-4 shadow p-3">
                         <div class="card-header">
                             <div class="d-flex justify-content-between align-items-center">
-                                <h3 class="card-title">Create Category </h3>
+                                <h3 class="card-title">Add Category </h3>
                             
-                                <a href="{{route('categories.index')}}" class="btn btn-primary">Back to Category List</a>
+                                <a href="{{route('categories.index')}}" class="btn btn-primary">Back</a>
                             </div>
                         </div>
                         

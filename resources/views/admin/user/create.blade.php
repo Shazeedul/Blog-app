@@ -28,8 +28,8 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
-                            <h3 class="card-title">Create User</h3>
-                            <a href="{{ route('users.index') }}" class="btn btn-primary">Go Back to User List</a>
+                            <h3 class="card-title">Add User</h3>
+                            <a href="{{ route('users.index') }}" class="btn btn-primary">Back</a>
                         </div>
                     </div>
                     <div class="card-body p-0">
@@ -62,9 +62,7 @@
                                             <label for="password">User password</label>
                                             <input type="password" name="password" class="form-control" id="password" placeholder="Enter password">
                                         </div>
-                                    </div>
-                                    <div class="card-footer">
-                                        <button type="submit" class="btn btn-lg btn-primary">Submit</button>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
                             </div>

@@ -29,7 +29,7 @@
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
                             <h3 class="card-title">View Message</h3>
-                            <a href="{{ route('contact.index') }}" class="btn btn-primary">Go Back to Message List</a>
+                            <a href="{{ route('contact.index') }}" class="btn btn-primary">Back</a>
                         </div>
                     </div>
                     <div class="card-body">

@@ -28,7 +28,7 @@
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
                             <h3 class="card-title">User List</h3>
-                            <a href="<?php echo e(route('users.create')); ?>" class="btn btn-primary">Create User</a>
+                            <a href="<?php echo e(route('users.create')); ?>" class="btn btn-primary">Add User</a>
                         </div>
                     </div>
                     <!-- /.card-header -->
