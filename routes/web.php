@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\ContactController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\FrontEndController;
 use App\Http\Controllers\ProfileController;
 
@@ -28,6 +29,13 @@ Route::post('/reply/store', [FrontEndController::class,'replyComment'])->name('w
 
 
 Route::get('/profile', [ProfileController::class, 'index'])->name('website.profile');
+
+
+//Password Reset Route
+Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 
+Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');
+Route::post('reset-password', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
 
 
 
@@ -62,3 +70,16 @@ Route::get('register', [AuthController::class, 'register'])->name('register');
 Route::post('register', [AuthController::class, 'store'])->name('addRegister');
 Route::post('login', [AuthController::class, 'check'])->name('checkLogin');
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+
+//Google Login Route
+Route::get('login/google', [AuthController::class, 'redirectToGoogle'])->name('login.google');
+Route::get('/login/google/callback', [AuthController::class, 'handleGoogleCallback']);
+
+//Facebook Login Route
+Route::get('login/facebook', [AuthController::class, 'redirectToFacebook'])->name('login.facebook');
+Route::get('/login/facebook/callback', [AuthController::class, 'handleFacebookCallback']);
+
+
+//Github Login Route
+Route::get('login/github', [AuthController::class, 'redirectToGithub'])->name('login.github');
+Route::get('/login/github/callback', [AuthController::class, 'handleGithubCallback']);

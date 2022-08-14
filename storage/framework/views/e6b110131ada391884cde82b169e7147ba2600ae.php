@@ -11,7 +11,7 @@
                 <figure class="author-figure mb-0 mr-3 d-inline-block">
                   <img src="<?php echo e(asset('storage/'.$post->user->image)); ?>" alt="Image" class="img-fluid">
                 </figure>
-                <span class="d-inline-block mt-1">By <?php echo e($post->user->fname. ' '.$post->user->lname); ?></span>
+                <span class="d-inline-block mt-1">By <?php echo e($post->user->name); ?></span>
                 <span>&nbsp;-&nbsp; <?php echo e($post->created_at->format('M d, Y')); ?></span>
               </div>
             </div>
@@ -85,7 +85,7 @@
               <div class="bio text-center">
                 <img src="<?php echo e(asset('storage/'.$post->user->image)); ?>" alt="Image Placeholder" class="img-fluid mb-5">
                 <div class="bio-body">
-                  <h2><?php echo e($post->user->fname.' '.$post->user->lname); ?></h2>
+                  <h2><?php echo e($post->user->name); ?></h2>
                   <p class="mb-4"><?php echo e($post->user->description); ?></p>
                   <p><a href="#" class="btn btn-primary btn-sm rounded px-4 py-2">Read my bio</a></p>
                   <p class="social">

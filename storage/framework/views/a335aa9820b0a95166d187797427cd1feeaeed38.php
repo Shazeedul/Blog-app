@@ -53,7 +53,7 @@
                                                 <img src="<?php echo e(asset('storage/'.$user->image)); ?>" class="img-fluid" alt="">
                                             </div>
                                         </td>
-                                        <td><?php echo e($user->fname.' '.$user->lname); ?></td>
+                                        <td><?php echo e($user->name); ?></td>
                                         <td><?php echo e($user->email); ?></td>
                                         <td class="d-flex" style="width: 150px">
                                             <a href="<?php echo e(route('users.edit', [$user->id])); ?>" class="btn btn-sm btn-primary mr-1"> <i class="fas fa-edit"></i> </a>

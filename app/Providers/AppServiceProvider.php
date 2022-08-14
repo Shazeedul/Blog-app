@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Category;
 use App\Models\Setting;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -17,7 +18,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        // URL::forceScheme('https');
     }
 
     /**
@@ -27,10 +28,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // if(config('app.env') === 'production') {
-        //     \URL::forceScheme('https');
-        // }
-
         $categories = Category::take(5)->get();
         View::share('categories', $categories);
 

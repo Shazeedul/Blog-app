@@ -8,10 +8,17 @@
           <div class="card">
             <div class="rounded-top text-white d-flex flex-row" style="background-color: #000; height:200px;">
               <div class="ms-4 ml-3 mt-5 d-flex flex-column" style="width: 150px;">
-                <?php if(Auth::user()->image): ?>
+                <?php if(Auth::user()->image || Auth::user()->avatar): ?>
+                  <?php if(Auth::user()->image != null): ?>
                   <img src="<?php echo e(asset('storage/'.Auth::user()->image)); ?>"
                   alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
                   style="width: 150px; z-index: 1">
+                  <?php else: ?>
+                  <img src="<?php echo e(asset(Auth::user()->avatar)); ?>"
+                  alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
+                  style="width: 150px; z-index: 1">
+                  <?php endif; ?>
+                  
                 <?php else: ?>
                   <img src="<?php echo e(asset('/assets/website/images/profile-avatar.png')); ?>"
                   alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
@@ -24,7 +31,7 @@
                 </button>
               </div>
               <div class="ms-4 ml-2" style="margin-top: 130px;">
-                <h5 class="text-white"><?php echo e($profile->fname.' '.$profile->lname); ?></h5>
+                <h5 class="text-white"><?php echo e($profile->name); ?></h5>
                 <p><?php echo e($profile->email); ?></p>
               </div>
               <div class="ms-4 mr-3 mt-3 d-flex flex-column ml-auto">
@@ -37,14 +44,7 @@
                   <p class="mb-1 h5"><?php echo e($postCount); ?></p>
                   <p class="small text-muted mb-0">Posts</p>
                 </div>
-                <div class="px-3">
-                  <p class="mb-1 h5">1026</p>
-                  <p class="small text-muted mb-0">Followers</p>
-                </div>
-                <div>
-                  <p class="mb-1 h5">478</p>
-                  <p class="small text-muted mb-0">Following</p>
-                </div>
+                
               </div>
             </div>
             <div class="card-body p-4 text-black">
@@ -77,7 +77,7 @@
                   <div class="col">
                     <?php $__currentLoopData = $lastPosts2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <a href="<?php echo e(route('website.post', ['slug' => $post->slug])); ?>" class="d-block"
-                      style="background-image: url(<?php echo e(asset('storage/'.$post->image)); ?>); background-size:cover; height:250px;">
+                      style="background-image: url(<?php echo e(asset('storage/'.$post->image)); ?>); background-size:cover; height:300px;">
                       <span class="post-category text-white bg-success"><?php echo e($post->category->name); ?></span>
                       <div class="text text-sm">
                           <h2><?php echo e($post->title); ?></h2>

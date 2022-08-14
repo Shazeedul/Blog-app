@@ -73,10 +73,15 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="<?php echo e(asset('storage/'.Auth::user()->image)); ?>" class="img-circle elevation-2" alt="User Image">
+          <?php if(Auth::user()->image): ?>
+            <img src="<?php echo e(asset('storage/'.Auth::user()->image)); ?>" class="img-circle elevation-2" alt="User Image">
+          <?php else: ?>
+            <img src="<?php echo e(asset('/assets/website/images/profile-avatar.png')); ?>" class="img-circle elevation-2" alt="User Image">
+          <?php endif; ?>
+          
         </div>
         <div class="info">
-          <a href="<?php echo e(route('user.profile')); ?>" class="d-block"><?php echo e(Auth::user()->fname.' '.Auth::user()->lname); ?></a>
+          <a href="<?php echo e(route('user.profile')); ?>" class="d-block"><?php echo e(Auth::user()->name); ?></a>
         </div>
       </div>
 

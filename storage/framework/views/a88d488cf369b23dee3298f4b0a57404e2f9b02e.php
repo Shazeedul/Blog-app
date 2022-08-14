@@ -31,7 +31,7 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <h3 class="card-title">Create Post </h3>
                             
-                                <a href="<?php echo e(route('posts.index')); ?>" class="btn btn-primary">Back to Post List</a>
+                                <a href="<?php echo e(route('posts.index')); ?>" class="btn btn-primary">Back</a>
                             </div>
                         </div>
                         

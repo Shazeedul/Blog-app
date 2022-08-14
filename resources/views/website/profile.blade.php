@@ -8,10 +8,19 @@
           <div class="card">
             <div class="rounded-top text-white d-flex flex-row" style="background-color: #000; height:200px;">
               <div class="ms-4 ml-3 mt-5 d-flex flex-column" style="width: 150px;">
-                @if (Auth::user()->image)
+                @if (Auth::user()->image || Auth::user()->avatar)
+                  @if (Auth::user()->image != null)
                   <img src="{{ asset('storage/'.Auth::user()->image) }}"
                   alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
                   style="width: 150px; z-index: 1">
+                  @else
+                  <img src="{{ asset(Auth::user()->avatar) }}"
+                  alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
+                  style="width: 150px; z-index: 1">
+                  @endif
+                  {{-- <img src="{{ asset('storage/'.Auth::user()->image) }}"
+                  alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
+                  style="width: 150px; z-index: 1"> --}}
                 @else
                   <img src="{{ asset('/assets/website/images/profile-avatar.png') }}"
                   alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
@@ -24,7 +33,7 @@
                 </button>
               </div>
               <div class="ms-4 ml-2" style="margin-top: 130px;">
-                <h5 class="text-white">{{ $profile->fname.' '.$profile->lname }}</h5>
+                <h5 class="text-white">{{ $profile->name }}</h5>
                 <p>{{ $profile->email }}</p>
               </div>
               <div class="ms-4 mr-3 mt-3 d-flex flex-column ml-auto">
@@ -37,14 +46,14 @@
                   <p class="mb-1 h5">{{$postCount}}</p>
                   <p class="small text-muted mb-0">Posts</p>
                 </div>
-                <div class="px-3">
+                {{-- <div class="px-3">
                   <p class="mb-1 h5">1026</p>
                   <p class="small text-muted mb-0">Followers</p>
                 </div>
                 <div>
                   <p class="mb-1 h5">478</p>
                   <p class="small text-muted mb-0">Following</p>
-                </div>
+                </div> --}}
               </div>
             </div>
             <div class="card-body p-4 text-black">
@@ -77,7 +86,7 @@
                   <div class="col">
                     @foreach($lastPosts2 as $post)
                     <a href="{{ route('website.post', ['slug' => $post->slug]) }}" class="d-block"
-                      style="background-image: url({{asset('storage/'.$post->image)}}); background-size:cover; height:250px;">
+                      style="background-image: url({{asset('storage/'.$post->image)}}); background-size:cover; height:300px;">
                       <span class="post-category text-white bg-success">{{ $post->category->name }}</span>
                       <div class="text text-sm">
                           <h2>{{ $post->title }}</h2>

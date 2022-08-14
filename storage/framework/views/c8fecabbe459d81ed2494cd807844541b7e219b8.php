@@ -1,6 +1,6 @@
 <?php $__currentLoopData = $comments; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $comment): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 <div class="display-comment">
-    <strong><?php echo e($comment->user->fname.' '.$comment->user->lname); ?></strong>
+    <strong><?php echo e($comment->user->name); ?></strong>
     <p><?php echo e($comment->comment); ?></p>
     <a href="" id="reply"></a>
     <form method="post" action="<?php echo e(route('website.reply')); ?>">

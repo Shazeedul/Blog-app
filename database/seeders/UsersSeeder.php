@@ -18,8 +18,7 @@ class UsersSeeder extends Seeder
     {
         User::firstOrCreate(['email'=>'test001@example.com'],
         [
-            'fname' => 'Syed',
-            'lname' => 'Shazeedul',
+            'name' => 'Syed Shazeedul',
             'email' => 'syedshazeedul@gmail.com',
             'password' => bcrypt('123456789'),
             'role' => '1',
@@ -27,8 +26,7 @@ class UsersSeeder extends Seeder
         
         User::firstOrCreate(['email'=>'test002@example.com'],
         [
-            'fname' => 'Mr.',
-            'lname' => 'Nejam',
+            'name' => 'Mr. Nejam',
             'email' => 'syedshazeedul@yahoo.com',
             'password' => bcrypt('987654321'),
             'role' => '0',
@@ -36,8 +34,7 @@ class UsersSeeder extends Seeder
 
         User::firstOrCreate(['email'=>'test003@example.com'],
         [
-            'fname' => 'Mr.',
-            'lname' => 'Daud',
+            'name' => 'Mr. Daud',
             'email' => 'syedshazeedul@hotmail.com',
             'password' => bcrypt('987654321'),
             'role' => '0',

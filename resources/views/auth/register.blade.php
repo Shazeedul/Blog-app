@@ -35,21 +35,10 @@
                   <form action="{{route('addRegister')}}" method="POST">
                     @csrf
                     <!-- 2 column grid layout with text inputs for the first and last names -->
-                    <div class="row">
-                        <div class="col-md-6 mb-4">
-                            <div class="form-floating">
-                            <input type="text" id="form3Example1" class="form-control" name="fname" value="{{old('fname')}}"/>
-                            <span class="text-danger">@error('fname'){{$message}}@enderror</span>
-                            <label class="form-label" for="form3Example1">First name</label>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <div class="form-floating">
-                            <input type="text" id="form3Example2" class="form-control" name="lname" value="{{old('lname')}}"/>
-                            <span class="text-danger">@error('lname'){{$message}}@enderror</span>
-                            <label class="form-label" for="form3Example2">Last name</label>
-                            </div>
-                        </div>
+                    <div class="form-floating form-white mb-4">
+                      <input type="text" id="form3Example1" class="form-control" name="name" value="{{old('name')}}"/>
+                      <span class="text-danger">@error('name'){{$message}}@enderror</span>
+                      <label class="form-label" for="form3Example1">Full name</label>
                     </div>
       
                     <div class="form-floating form-white mb-4">

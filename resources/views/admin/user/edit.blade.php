@@ -40,19 +40,9 @@
                                     @method('PUT')
                                     <div class="card-body">
                                         @include('includes.errors')
-                                        <div class="row">
-                                            <div class="col-md-6 md-4">
-                                                <div class="form-group">
-                                                    <label for="fname">User first name</label>
-                                                    <input type="name" name="fname" class="form-control" id="fname" placeholder="Enter first name" value="{{ $user->fname }}">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 md-4">
-                                                <div class="form-group">
-                                                    <label for="lname">User last name</label>
-                                                    <input type="name" name="lname" class="form-control" id="lname" placeholder="Enter last name" value="{{ $user->lname }}">
-                                                </div>
-                                            </div>
+                                        <div class="form-group">
+                                            <label for="name">User Full name</label>
+                                            <input type="name" name="name" class="form-control" id="name" placeholder="Enter first name" value="{{ $user->fname }}">
                                         </div>
                                         <div class="form-group">
                                             <label for="email">User email</label>

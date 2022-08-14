@@ -65,7 +65,7 @@
                                                 <span class="badge badge-primary"><?php echo e($tag->name); ?> </span>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </td>
-                                        <td><?php echo e($post->user->fname.' '.$post->user->lname); ?></td>
+                                        <td><?php echo e($post->user->name); ?></td>
                                         <td style="width: 130px"><?php echo e($post->created_at->format('d M, Y')); ?></td>
                                         <td class="d-flex">
                                             <a href="<?php echo e(route('posts.show', [$post->id])); ?>" class="btn btn-sm btn-success mr-1"> <i class="fas fa-eye"></i> </a>

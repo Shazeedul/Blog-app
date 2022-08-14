@@ -20,7 +20,7 @@
             <img src="@if($user->image){{ asset('storage/'.$user->image) }} @else {{ asset('assets/website/images/profile-avatar.png') }} @endif" alt="Image" class="img-fluid">
             </div>
             <div class="col-md-5 mr-auto order-md-1">
-                <h2> {{ $user->fname.' '.$user->lname }}</h2>
+                <h2> {{ $user->name }}</h2>
                 <p>{{ $user->description }}</p>
             </div>
         </div>

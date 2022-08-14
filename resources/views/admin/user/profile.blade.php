@@ -42,19 +42,9 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-6">
-                                                <div class="row">
-                                                    <div class="col-md-6 md-4">
-                                                        <div class="form-group">
-                                                            <label for="fname">User first name</label>
-                                                            <input type="name" name="fname" class="form-control" id="fname" placeholder="Enter first name" value="{{ $user->fname }}">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 md-4">
-                                                        <div class="form-group">
-                                                            <label for="lname">User last name</label>
-                                                            <input type="name" name="lname" class="form-control" id="lname" placeholder="Enter last name" value="{{ $user->lname }}">
-                                                        </div>
-                                                    </div>
+                                                <div class="form-group">
+                                                    <label for="fname">User Full name</label>
+                                                    <input type="name" name="name" class="form-control" id="name" placeholder="Enter first name" value="{{ $user->name }}">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="email">User email</label>
@@ -81,7 +71,7 @@
                                         </div>
                                     </div>
                                     <div class="card-footer">
-                                        <button type="submit" class="btn btn-lg btn-primary">Update Profile</button>
+                                        <button type="submit" class="btn btn-primary">Update Profile</button>
                                     </div>
                                 </form>
                             </div>
@@ -92,7 +82,7 @@
                                             <img src="{{ asset('storage/'.$user->image) }}" alt="" class="img-fluid rounded-circle img-rounded">
                                         </div>
                                         <div class="mt-2">
-                                            <h5>{{ $user->fname.' '.$user->lname }}</h5>
+                                            <h5>{{ $user->name }}</h5>
                                             <p> {{ $user->email }} </p>
                                         </div>
                                     </div>

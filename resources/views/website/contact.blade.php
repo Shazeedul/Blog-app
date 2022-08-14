@@ -25,7 +25,7 @@
               @endif
               <div class="row form-group">
                 <div class="col-md-12">
-                  <label class="text-black" for="fname">Name</label>
+                  <label class="text-black" for="name">Name</label>
                   <input type="text" id="name" name="name" class="form-control" placeholder="Name">
                 </div>
               </div>

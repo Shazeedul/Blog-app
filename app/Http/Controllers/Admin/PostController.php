@@ -113,8 +113,8 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         if($post){
-            if(file_exists(public_path($post->image))){
-                unlink(public_path($post->image));
+            if(Storage::exists($post->image)){
+                Storage::delete($post->image);
             }
 
             $post->delete();

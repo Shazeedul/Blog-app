@@ -27,15 +27,13 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'fname' => 'required|string|max:255',
-            'lname' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8',
         ]);
 
         $user = User::create([
-            'fname' => $request->fname,
-            'lname' => $request->lname,
+            'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'description' => $request->description,
@@ -54,14 +52,12 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $this->validate($request, [
-            'fname' => 'required|string|max:255',
-            'lname' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
             'email' => "required|email|unique:users,email, $user->id",
             'password' => 'sometimes|nullable|min:8',
         ]);
 
-        $user->fname = $request->fname;
-        $user->lname = $request->lname;
+        $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->description = $request->description;
@@ -91,15 +87,13 @@ class UserController extends Controller
         $user = auth()->user();
 
         $this->validate($request, [
-            'fname' => 'required|string|max:255',
-            'lname' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
             'email' => "required|email|unique:users,email, $user->id",
             'password' => 'sometimes|nullable|min:8',
             'image'=> 'sometimes|nullable|image|max:2048',
         ]);
 
-        $user->fname = $request->fname;
-        $user->lname = $request->lname;
+        $user->name = $request->name;
         $user->email = $request->email;
         $user->description = $request->description;
 
@@ -118,5 +112,11 @@ class UserController extends Controller
 
         Session::flash('success', 'User profile updated successfully');
         return redirect()->back();
+    }
+
+    private function deleteFile($path){
+        if (Storage::exists($path)) {
+            Storage::delete($path);
+        }
     }
 }

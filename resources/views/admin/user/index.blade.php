@@ -53,7 +53,7 @@
                                                 <img src="{{ asset('storage/'.$user->image) }}" class="img-fluid" alt="">
                                             </div>
                                         </td>
-                                        <td>{{ $user->fname.' '.$user->lname }}</td>
+                                        <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td class="d-flex" style="width: 150px">
                                             <a href="{{ route('users.edit', [$user->id]) }}" class="btn btn-sm btn-primary mr-1"> <i class="fas fa-edit"></i> </a>

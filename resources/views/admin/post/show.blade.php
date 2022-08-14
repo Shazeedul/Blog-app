@@ -61,7 +61,7 @@
                                 </tr>
                                 <tr>
                                     <th style="width: 200px">Author Name</th>
-                                    <td>{{ $post->user->fname.' '.$post->user->lname }}</td>
+                                    <td>{{ $post->user->name }}</td>
                                 </tr>
                                 <tr>
                                     <th style="width: 200px">Description</th>

@@ -29,7 +29,7 @@
                 <figure class="author-figure mb-0 mr-3 float-left">
                   <img src="@if($post->user->image){{ asset('storage/'.$post->user->image) }} @else {{ asset('assets/website/images/profile-avatar.png') }} @endif" alt="Image" class="img-fluid">
                 </figure>
-                <span class="d-inline-block mt-1">By <a href="#">{{ $post->user->fname.' '.$post->user->lname }}</a></span>
+                <span class="d-inline-block mt-1">By <a href="#">{{ $post->user->name }}</a></span>
                 <span>&nbsp;-&nbsp; {{ $post->created_at->format('M d, Y') }}</span>
               </div>
               
