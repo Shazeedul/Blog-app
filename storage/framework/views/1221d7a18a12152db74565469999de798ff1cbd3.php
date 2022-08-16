@@ -51,9 +51,7 @@
               <div class="mb-5">
                 <p class="lead fw-normal mb-1">About</p>
                 <div class="p-4" style="background-color: #f8f9fa;">
-                  <p class="font-italic mb-1">Web Developer</p>
-                  <p class="font-italic mb-1">Lives in New York</p>
-                  <p class="font-italic mb-0">Photographer</p>
+                  <p class="font-italic mb-1"><?php echo e($profile->description); ?></p>
                 </div>
               </div>
               <div class="d-flex justify-content-between align-items-center mb-4">
@@ -64,19 +62,23 @@
                 <div class="row align-items-stretch">
                   <div class="col">
                     <?php $__currentLoopData = $firstPosts2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <a href="<?php echo e(route('website.post', ['slug' => $post->slug])); ?>" class="d-block"
+                    <a href="<?php echo e(route('website.post', ['slug' => $post->slug])); ?>" class="h-entry v-height gradien d-block mb-2"
                       style="background-image: url(<?php echo e(asset('storage/'.$post->image)); ?>); background-size:cover; height:300px;">
-                      <span class="post-category text-white bg-success"><?php echo e($post->category->name); ?></span>
-                      <div class="text text-sm">
-                          <h2><?php echo e($post->title); ?></h2>
-                          <span class="date"><?php echo e($post->created_at->format('M d, Y')); ?></span>
+                      <div class="text">
+                        <div class="post-categories mb-3">
+                          <span class="post-category text-white bg-success"><?php echo e($post->category->name); ?></span>
+                          <div class="text text-sm">
+                            <h2><?php echo e($post->title); ?></h2>
+                            <span class="date"><?php echo e($post->created_at->format('M d, Y')); ?></span>
+                          </div>
+                        </div>
                       </div>
                     </a>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                   </div>
                   <div class="col">
                     <?php $__currentLoopData = $lastPosts2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <a href="<?php echo e(route('website.post', ['slug' => $post->slug])); ?>" class="d-block"
+                    <a href="<?php echo e(route('website.post', ['slug' => $post->slug])); ?>" class="d-block mb-2"
                       style="background-image: url(<?php echo e(asset('storage/'.$post->image)); ?>); background-size:cover; height:300px;">
                       <span class="post-category text-white bg-success"><?php echo e($post->category->name); ?></span>
                       <div class="text text-sm">

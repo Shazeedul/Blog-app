@@ -73,7 +73,7 @@
               <span>&nbsp;-&nbsp; <?php echo e($post->created_at->format('M d, Y')); ?></span>
             </div>
             
-              <p> <?php echo Str::limit($post->description, 50); ?> </p>
+              <p> <?php echo Str::limit($post->description, 10); ?> </p>
               <p><a href="<?php echo e(route('website.post', ['slug' => $post->slug])); ?>">Read More</a></p>
             </div>
           </div>

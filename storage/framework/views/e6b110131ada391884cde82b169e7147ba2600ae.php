@@ -125,7 +125,7 @@
               <h3 class="heading">Categories</h3>
               <ul class="categories">
                 <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                  <li><a href="#"><?php echo e($category->name); ?> <span>(12)</span> </a></li>
+                  <li><a href="<?php echo e(route('website.category', ['slug' => $category->slug])); ?>"><?php echo e($category->name); ?> <span>(<?php echo e($category->post->count()); ?>)</span> </a></li>
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
               </ul>
             </div>

@@ -36,13 +36,7 @@
       <div class="container-fluid">
         <div class="row align-items-center">
           
-          <div class="col-12 search-form-wrap js-search-form">
-            <form method="get" action="#">
-              <input type="text" id="s" class="form-control" placeholder="Search...">
-              <button class="search-btn" type="submit"><span class="icon-search"></span></button>
-            </form>
-          </div>
-
+          
           <div class="col-4 site-logo">
             <a href="#" class="text-black h2 mb-0">Mini Blog</a>
           </div>
@@ -69,13 +63,20 @@
                       
                   @endif
                 </li>
-                <li class="d-none d-lg-inline-block"><a href="#" class="js-search-toggle"><span class="icon-search"></span></a></li>
+                <li class="d-none d-lg-inline-block"><a class="js-search-toggle"><span class="icon-search"></span></a></li>
               </ul>
             </nav>
-            <a href="#" class="site-menu-toggle js-menu-toggle text-black d-inline-block d-lg-none"><span class="icon-menu h3"></span></a></div>
           </div>
-
-      </div>
+            <a href="#" class="site-menu-toggle js-menu-toggle text-black d-inline-block d-lg-none"><span class="icon-menu h3"></span></a>
+          </div>
+          
+        </div>
+        <div class="col-12 search-form-wrap js-search-form d-flex justify-content-end">
+          <form method="get">
+            <input type="text" id="s" name="search" class="form-control" placeholder="Search...">
+            <button class="search-btn" type="submit"><span class="icon-search"></span></button>
+          </form>
+        </div>
     </header>
     
     @yield('content')
@@ -85,7 +86,7 @@
         <div class="row mb-5">
           <div class="col-md-4">
             <h3 class="footer-heading mb-4">About Us</h3>
-            {{-- <p>{{ $setting->description }} </p> --}}
+            <p>{{ $setting->description }} </p>
           </div>
           <div class="col-md-3 ml-auto">
             <!-- <h3 class="footer-heading mb-4">Navigation</h3> -->

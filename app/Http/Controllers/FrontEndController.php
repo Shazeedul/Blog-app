@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Session;
 
 class FrontEndController extends Controller
 {
-    public function home(){
+    public function home(Request $request)
+    {
         $posts = Post::with('category', 'user')->orderBy('created_at', 'DESC')->take(5)->get();
 
         $firstPosts2 = $posts->splice(0, 2);
@@ -25,8 +26,19 @@ class FrontEndController extends Controller
         $firstfooterPosts2 = $footerPosts->splice(0, 2);
         $lastFooterPost = $footerPosts->splice(0, 1);
 
-        $recentPosts = Post::with('category', 'user')->orderBy('created_at', 'DESC')->paginate(9);
-        return view('website.home', compact(['posts', 'recentPosts', 'firstPosts2', 'middlePost', 'lastPosts', 'firstFooterPost', 'firstfooterPosts2', 'lastFooterPost']));
+        $search = $request->search ?? "";
+
+        $recentPosts = Post::with('category', 'user');
+
+        
+        // dd($search);
+        if ($search != "") {
+            $recentPosts = $recentPosts->where('title', 'LIKE', '%'.$search.'%')->orderBy('created_at', 'DESC')->paginate(5);
+        } else {
+            $recentPosts = $recentPosts->orderBy('created_at', 'DESC')->paginate(5);
+        }
+        
+        return view('website.home', compact(['posts', 'recentPosts', 'firstPosts2', 'middlePost', 'lastPosts', 'firstFooterPost', 'firstfooterPosts2', 'lastFooterPost', 'search']));
     }
     
     public function about(){
@@ -61,7 +73,8 @@ class FrontEndController extends Controller
         return view('website.contact');
     }
     
-    public function post($slug){
+    public function post($slug, Category $id)
+    {
         $post = Post::with('category', 'user')->where('slug', $slug)->first();
         $posts = Post::with('category', 'user')->inRandomOrder()->limit(3)->get();
 
@@ -71,7 +84,9 @@ class FrontEndController extends Controller
         $firstRelatedPosts2 = $relatedPosts->splice(0, 2);
         $lastRelatedPost = $relatedPosts->splice(0, 1);
 
-        $categories = Category::all();
+        // $categories = Category::all();
+        $categories = Category::with('post')->get();
+        // $categoriesCount = Post::where('category_id', '=', $id)->count();
         $tags = Tag::all();
 
         if($post){

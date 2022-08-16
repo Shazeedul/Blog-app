@@ -60,9 +60,7 @@
               <div class="mb-5">
                 <p class="lead fw-normal mb-1">About</p>
                 <div class="p-4" style="background-color: #f8f9fa;">
-                  <p class="font-italic mb-1">Web Developer</p>
-                  <p class="font-italic mb-1">Lives in New York</p>
-                  <p class="font-italic mb-0">Photographer</p>
+                  <p class="font-italic mb-1">{{ $profile->description }}</p>
                 </div>
               </div>
               <div class="d-flex justify-content-between align-items-center mb-4">
@@ -73,19 +71,23 @@
                 <div class="row align-items-stretch">
                   <div class="col">
                     @foreach($firstPosts2 as $post)
-                    <a href="{{ route('website.post', ['slug' => $post->slug]) }}" class="d-block"
+                    <a href="{{ route('website.post', ['slug' => $post->slug]) }}" class="h-entry v-height gradien d-block mb-2"
                       style="background-image: url({{asset('storage/'.$post->image)}}); background-size:cover; height:300px;">
-                      <span class="post-category text-white bg-success">{{ $post->category->name }}</span>
-                      <div class="text text-sm">
-                          <h2>{{ $post->title }}</h2>
-                          <span class="date">{{ $post->created_at->format('M d, Y')}}</span>
+                      <div class="text">
+                        <div class="post-categories mb-3">
+                          <span class="post-category text-white bg-success">{{ $post->category->name }}</span>
+                          <div class="text text-sm">
+                            <h2>{{ $post->title }}</h2>
+                            <span class="date">{{ $post->created_at->format('M d, Y')}}</span>
+                          </div>
+                        </div>
                       </div>
                     </a>
                     @endforeach
                   </div>
                   <div class="col">
                     @foreach($lastPosts2 as $post)
-                    <a href="{{ route('website.post', ['slug' => $post->slug]) }}" class="d-block"
+                    <a href="{{ route('website.post', ['slug' => $post->slug]) }}" class="d-block mb-2"
                       style="background-image: url({{asset('storage/'.$post->image)}}); background-size:cover; height:300px;">
                       <span class="post-category text-white bg-success">{{ $post->category->name }}</span>
                       <div class="text text-sm">

@@ -36,7 +36,7 @@
                     <?php echo csrf_field(); ?>
                     <div class="form-floating form-white mb-4">
                       <input type="email" id="typeEmailX" class="form-control form-control-lg" name="email" value="<?php echo e(old('email')); ?>"/>
-                      <span class="text-danger"><?php $__errorArgs = ['fname'];
+                      <span class="text-danger"><?php $__errorArgs = ['name'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
@@ -49,7 +49,7 @@ unset($__errorArgs, $__bag); ?></span>
       
                     <div class="form-floating form-white mb-4">
                       <input type="password" id="typePasswordX" class="form-control form-control-lg" name="password" value="<?php echo e(old('password')); ?>"/>
-                      <span class="text-danger"><?php $__errorArgs = ['fname'];
+                      <span class="text-danger"><?php $__errorArgs = ['email'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }

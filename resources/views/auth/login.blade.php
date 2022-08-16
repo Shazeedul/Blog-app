@@ -34,13 +34,13 @@
                     @csrf
                     <div class="form-floating form-white mb-4">
                       <input type="email" id="typeEmailX" class="form-control form-control-lg" name="email" value="{{old('email')}}"/>
-                      <span class="text-danger">@error('fname'){{$message}}@enderror</span>
+                      <span class="text-danger">@error('name'){{$message}}@enderror</span>
                       <label class="form-label" for="typeEmailX">Email</label>
                     </div>
       
                     <div class="form-floating form-white mb-4">
                       <input type="password" id="typePasswordX" class="form-control form-control-lg" name="password" value="{{old('password')}}"/>
-                      <span class="text-danger">@error('fname'){{$message}}@enderror</span>
+                      <span class="text-danger">@error('email'){{$message}}@enderror</span>
                       <label class="form-label" for="typePasswordX">Password</label>
                     </div>
       
